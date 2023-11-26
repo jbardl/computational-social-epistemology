@@ -1,0 +1,6 @@
+format: jb-book
+root: 0. Introduccion
+chapters:
+- file: 2. Simulaciones espaciales
+- file: 3. Dinamica de opiniones
+- file: 4. Polarización con organismos centrales

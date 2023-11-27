@@ -170,7 +170,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Definiciones de polarización</a></li>
 
 
-
 <li class="toctree-l1"><a class="reference internal" href="4.%20Polarizaci%C3%B3n%20con%20organismos%20centrales.html">Polarización con organismos centrales</a></li>
 
 
@@ -331,7 +330,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-sistematico">Análisis sistemático</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cota-asimetrica">Cota asimétrica</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asimetria-independiente-de-la-opinion">Asimetría independiente de la opinión</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Experimentos</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Experimentos</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asimetria-dependiente-de-la-opinion">Asimetría dependiente de la opinión</a></li>
@@ -348,7 +347,6 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referencias</a></li>
 </ul>
 
             </nav>
@@ -386,14 +384,14 @@ La polarización de opiniones en entornos sociales ha emergido como un fenómeno
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="definiciones-de-polarizacion">
 <h1>Definiciones de polarización<a class="headerlink" href="#definiciones-de-polarizacion" title="Permalink to this heading">#</a></h1>
-<p>Polarización se dice de muchas maneras. En Bramson et al. (2016, 2017) se presentan nueve sentidos alternativos de polarización, junto con definiciones formales que permiten implementarlo como métrica de análisis. Estos nueve sentidos de polarización se subdividen, a su vez, en dos grupos: el primero de ellos refiere a métricas que miden la polarización directamente de un perfil de opiniones <span class="math notranslate nohighlight">\(x = x_i, \dots, x_j\)</span>. Estas métricas resultan como primeras aproximaciones muy intuitivas, pero sin embargo en muchos casos pueden resultar incompletas. Un segundo grupo de métricas de polarización observa el perfil de opiniones y además considera los diferentes grupos formados dentro de la comunidad.</p>
+<p>Polarización se dice de muchas maneras. En <span id="id1">[]</span>, <span id="id2">[]</span> se presentan nueve sentidos alternativos de polarización, junto con definiciones formales que permiten implementarlo como métrica de análisis. Estos nueve sentidos de polarización se subdividen, a su vez, en dos grupos: el primero de ellos refiere a métricas que miden la polarización directamente de un perfil de opiniones <span class="math notranslate nohighlight">\(x = x_i, \dots, x_j\)</span>. Estas métricas resultan como primeras aproximaciones muy intuitivas, pero sin embargo en muchos casos pueden resultar incompletas. Un segundo grupo de métricas de polarización observa el perfil de opiniones y además considera los diferentes grupos formados dentro de la comunidad.</p>
 <p>En el primer grupo de definiciones de polarización se encuentran apertura (<em>spread</em>), la dispersión (<em>dispersion</em>), la cobertura (<em>coverage</em>) y regionalización (<em>regionalization</em>).</p>
 <p>En el segundo grupo de definiciones de polarización se encuentran distinción (<em>distinctness</em>), divergecia de grupos (<em>group divergence</em>), consenso de grupos (<em>group convergence</em>) y paridad de tamaños (<em>size parity</em>)</p>
-<p>En Bramson et al. (2017), además, se realiza un análisis de los principales modelos de polarización de la literatura en función de estas métricas. Lo que se observa es que los distintos modelos reflejan diversos aspectos de la polarización.</p>
+<p>En <span id="id3">[]</span>, además, se realiza un análisis de los principales modelos de polarización de la literatura en función de estas métricas. Lo que se observa es que los distintos modelos reflejan diversos aspectos de la polarización.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="modelo-de-confianza-acotada">
 <h1>Modelo de confianza acotada<a class="headerlink" href="#modelo-de-confianza-acotada" title="Permalink to this heading">#</a></h1>
-<p>Este modelo fue presentado en Hegselmann, Krause (2002), y ampliado en Hegselmann, Krause (2006). El insight principal que aporta es que cada agente no ajusta sus opiniones en función de las de todos los otros agentes, sino sólo a partir de los agentes que piensan como él.</p>
+<p>Este modelo fue presentado en <span id="id4">[]</span>, y ampliado en <span id="id5">[]</span>. El insight principal que aporta es que cada agente no ajusta sus opiniones en función de las de todos los otros agentes, sino sólo a partir de los agentes que piensan como él.</p>
 <p>La simulación tiene un parámetro <span class="math notranslate nohighlight">\(\epsilon\)</span> que representa la <strong>incertidumbre</strong> de un agente.</p>
 <p>La fórmulad del modelo es la siguiente</p>
 <div class="math notranslate nohighlight">
@@ -404,7 +402,7 @@ x_i(t + 1) = \frac{1}{|I|}\sum_{j\in I}x_j (t)
 <p>Además, se admite un caso de límites asimétricos, donde el intervalo de confianza está dado por <span class="math notranslate nohighlight">\(\left[ -\epsilon_l, +\epsilon_r \right]\)</span>. En este caso, el conjunto de vecinos queda determinado por <span class="math notranslate nohighlight">\(I(i, x) = \left\{ 1 \leq j \leq n : -\epsilon_l \leq x_j - x_i \leq +\epsilon_r \right\}\)</span></p>
 <section id="experimentos">
 <h2>Experimentos<a class="headerlink" href="#experimentos" title="Permalink to this heading">#</a></h2>
-<p>Esta primera serie de experimentos incluye experimentos con una cota de confianza simétrica (<em>i.e.</em>, iguales valores de <span class="math notranslate nohighlight">\(\epsilon\)</span> a izquierda y a derecha) y con corridas únicas. En estos primeros experimentos se analiza la transición desde un resultado de fragmentación (pluralidad) de opiniones, hacia una polarización (polaridad) hasta el consenso (conformidad) (Hegselmann, Krause, 2002)</p>
+<p>Esta primera serie de experimentos incluye experimentos con una cota de confianza simétrica (<em>i.e.</em>, iguales valores de <span class="math notranslate nohighlight">\(\epsilon\)</span> a izquierda y a derecha) y con corridas únicas. En estos primeros experimentos se analiza la transición desde un resultado de fragmentación (pluralidad) de opiniones, hacia una polarización (polaridad) hasta el consenso (conformidad) <span id="id6">[]</span></p>
 <section id="fragmentacion">
 <h3>Fragmentación<a class="headerlink" href="#fragmentacion" title="Permalink to this heading">#</a></h3>
 <p>Cuando <span class="math notranslate nohighlight">\(\epsilon\)</span> es bajo -<em>i.e.</em>, cuando los agentes tienen una incertidumbre baja y actualizan sus opiniones sólo con agentes muy cercanos-, no se produce ningún fenómeno de agregación sino que se generan múltiples grupos aislados entre sí.</p>
@@ -422,7 +420,7 @@ x_i(t + 1) = \frac{1}{|I|}\sum_{j\in I}x_j (t)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a5b5d7083d6d512fc246c23d5deac0bee660e73b753136a1fb9ad1b4c963a169.png" src="_images/a5b5d7083d6d512fc246c23d5deac0bee660e73b753136a1fb9ad1b4c963a169.png" />
+<img alt="_images/c706d985ffceffca026503660480c5f506c0be68d6f361f08f88d6def79d7a44.png" src="_images/c706d985ffceffca026503660480c5f506c0be68d6f361f08f88d6def79d7a44.png" />
 </div>
 </div>
 </section>
@@ -443,7 +441,7 @@ x_i(t + 1) = \frac{1}{|I|}\sum_{j\in I}x_j (t)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/240f3c56491254ba6764edbef35c5b2b5fb0b7cc6d1cff4377bacb3e11be6b17.png" src="_images/240f3c56491254ba6764edbef35c5b2b5fb0b7cc6d1cff4377bacb3e11be6b17.png" />
+<img alt="_images/271c93af9d9d36ae9a6d60d37bceccfd902d9055698d9c7e901a0d7530647da1.png" src="_images/271c93af9d9d36ae9a6d60d37bceccfd902d9055698d9c7e901a0d7530647da1.png" />
 </div>
 </div>
 </section>
@@ -464,7 +462,7 @@ x_i(t + 1) = \frac{1}{|I|}\sum_{j\in I}x_j (t)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/96bd82461479219e32dff1f0667bfae7f30d7b90338d7cb2a8c8da602f4e8286.png" src="_images/96bd82461479219e32dff1f0667bfae7f30d7b90338d7cb2a8c8da602f4e8286.png" />
+<img alt="_images/ede73b3b48bdfc5e80be8e5f48ab9c0ea79fd91dff6597bbe0ceb3ee90291499.png" src="_images/ede73b3b48bdfc5e80be8e5f48ab9c0ea79fd91dff6597bbe0ceb3ee90291499.png" />
 </div>
 </div>
 </section>
@@ -473,12 +471,6 @@ x_i(t + 1) = \frac{1}{|I|}\sum_{j\in I}x_j (t)
 <h2>Análisis sistemático<a class="headerlink" href="#analisis-sistematico" title="Permalink to this heading">#</a></h2>
 <p>Para obtener una mejor representación de los resultados, se corren simulaciones sistemáticamente para distintos valores de <span class="math notranslate nohighlight">\(\epsilon\)</span>. En particular, para cada elección de parámetros se corren múltiples simulaciones, se toma el perfil de opiniones final y se promedia el resultado para cada agente. Dicho de otra forma, las opiniones al final de la simulación son consideradas como un histograma con <span class="math notranslate nohighlight">\(n\)</span> celdas. Esto se repite para múltiples valores de <span class="math notranslate nohighlight">\(\epsilon\)</span>, cubriendo todos los casos interesantes.</p>
 <p>El resultado es una visualización en tres dimensiones, donde el eje <span class="math notranslate nohighlight">\(x\)</span> representa el rango de opiniones de los agentes separado en las <span class="math notranslate nohighlight">\(n\)</span> celdas del histograma; el eje <span class="math notranslate nohighlight">\(y\)</span> representa los valores de <span class="math notranslate nohighlight">\(\epsilon\)</span> explorados, y el eje <span class="math notranslate nohighlight">\(z\)</span> expresa los valores de las opiniones de cada agente.</p>
-<p>Para la implementación, se aprovecha el polimorfismo de las interfaces de las simulaciones. Esto permite alimentar distintos modelos al análisis sistemático sin tener que realizar ninguna modificación. Lo único que debe especificarse es</p>
-<ul class="simple">
-<li><p>El modelo a utilizar</p></li>
-<li><p>Listado de parámetros para cada modelo</p></li>
-</ul>
-<p>Idea: implementar una búsqueda de parámetros bayesiana / genética, al estilo de <a class="reference external" href="https://optuna.org/">Optuna</a>. La métrica a optimizar en este caso sería alguna de las métricas de polarización. En cada paso de la exploración, el sistema se fija si una nueva configuración de parámetros aumenta o disminuye la polarización en el perfil de opiniones final. En base a estos resultados actualiza el prior que le asigna a esa configuración de parámetros. Esto podría servir para econtrar rápidamente cuáles son los parámetros que más polarizan o los que menos (dependiendo si se busca optimizar más o menos polarización).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reps</span> <span class="o">=</span> <span class="mi">5</span>
@@ -510,196 +502,247 @@ x_i(t + 1) = \frac{1}{|I|}\sum_{j\in I}x_j (t)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:   0%|                                                                   | 0/200 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:   0%|                                                                  | 0/200 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:   0%|▎                                                          | 1/200 [00:01&lt;04:25,  1.33s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:   0%|▎                                                         | 1/200 [00:01&lt;03:19,  1.00s/it]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:   3%|█▊                                                         | 6/200 [00:02&lt;01:03,  3.04it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:   1%|▌                                                         | 2/200 [00:01&lt;01:36,  2.06it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:   4%|██▎                                                        | 8/200 [00:02&lt;00:45,  4.23it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:   3%|█▋                                                        | 6/200 [00:02&lt;00:56,  3.41it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:   6%|███▏                                                      | 11/200 [00:03&lt;00:51,  3.66it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:   4%|██                                                        | 7/200 [00:02&lt;00:50,  3.83it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:   8%|████▋                                                     | 16/200 [00:04&lt;00:54,  3.36it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:   6%|███▏                                                     | 11/200 [00:03&lt;00:45,  4.13it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  10%|██████                                                    | 21/200 [00:05&lt;00:44,  4.03it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:   6%|███▋                                                     | 13/200 [00:03&lt;00:35,  5.27it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  12%|██████▋                                                   | 23/200 [00:05&lt;00:37,  4.74it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:   8%|████▌                                                    | 16/200 [00:04&lt;00:43,  4.18it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  13%|███████▌                                                  | 26/200 [00:06&lt;00:36,  4.71it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:   9%|█████▏                                                   | 18/200 [00:04&lt;00:34,  5.21it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  15%|████████▋                                                 | 30/200 [00:06&lt;00:25,  6.63it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  10%|█████▋                                                   | 20/200 [00:04&lt;00:28,  6.22it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  16%|█████████▎                                                | 32/200 [00:07&lt;00:34,  4.83it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  11%|██████▎                                                  | 22/200 [00:05&lt;00:34,  5.12it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  18%|██████████▏                                               | 35/200 [00:07&lt;00:25,  6.37it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  12%|██████▌                                                  | 23/200 [00:05&lt;00:32,  5.39it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  18%|██████████▋                                               | 37/200 [00:08&lt;00:32,  4.98it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  12%|██████▊                                                  | 24/200 [00:05&lt;00:33,  5.18it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  20%|███████████▌                                              | 40/200 [00:08&lt;00:24,  6.65it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  13%|███████▍                                                 | 26/200 [00:05&lt;00:35,  4.90it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  21%|████████████▏                                             | 42/200 [00:09&lt;00:32,  4.89it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  14%|███████▋                                                 | 27/200 [00:05&lt;00:32,  5.36it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  22%|████████████▊                                             | 44/200 [00:09&lt;00:26,  5.99it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  14%|████████▎                                                | 29/200 [00:06&lt;00:29,  5.81it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  23%|█████████████▎                                            | 46/200 [00:10&lt;00:32,  4.79it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  16%|████████▊                                                | 31/200 [00:07&lt;00:52,  3.24it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  24%|██████████████▏                                           | 49/200 [00:10&lt;00:23,  6.56it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  16%|█████████▍                                               | 33/200 [00:07&lt;00:38,  4.37it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  26%|██████████████▊                                           | 51/200 [00:11&lt;00:34,  4.30it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  17%|█████████▋                                               | 34/200 [00:07&lt;00:38,  4.37it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  28%|████████████████▏                                         | 56/200 [00:11&lt;00:25,  5.69it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  18%|██████████▎                                              | 36/200 [00:08&lt;00:41,  4.00it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  28%|████████████████▌                                         | 57/200 [00:11&lt;00:25,  5.59it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  20%|███████████                                              | 39/200 [00:08&lt;00:30,  5.24it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  30%|█████████████████                                         | 59/200 [00:12&lt;00:21,  6.65it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  20%|███████████▋                                             | 41/200 [00:08&lt;00:28,  5.64it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  30%|█████████████████▋                                        | 61/200 [00:12&lt;00:24,  5.68it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  22%|████████████▎                                            | 43/200 [00:09&lt;00:22,  6.86it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  31%|█████████████████▉                                        | 62/200 [00:12&lt;00:25,  5.45it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  22%|████████████▌                                            | 44/200 [00:09&lt;00:25,  6.22it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  32%|██████████████████▊                                       | 65/200 [00:12&lt;00:17,  7.78it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  23%|█████████████                                            | 46/200 [00:09&lt;00:27,  5.65it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  34%|███████████████████▍                                      | 67/200 [00:13&lt;00:24,  5.34it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  24%|█████████████▉                                           | 49/200 [00:10&lt;00:23,  6.56it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  35%|████████████████████▎                                     | 70/200 [00:13&lt;00:17,  7.42it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  26%|██████████████▌                                          | 51/200 [00:11&lt;00:49,  3.02it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  36%|████████████████████▉                                     | 72/200 [00:14&lt;00:24,  5.24it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  27%|███████████████▍                                         | 54/200 [00:12&lt;00:37,  3.91it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  36%|█████████████████████▏                                    | 73/200 [00:14&lt;00:22,  5.55it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  28%|███████████████▉                                         | 56/200 [00:12&lt;00:36,  3.91it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  38%|██████████████████████                                    | 76/200 [00:15&lt;00:30,  4.07it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  30%|████████████████▊                                        | 59/200 [00:12&lt;00:28,  4.89it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  39%|██████████████████████▌                                   | 78/200 [00:15&lt;00:25,  4.69it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  30%|█████████████████                                        | 60/200 [00:13&lt;00:28,  4.91it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  40%|███████████████████████▍                                  | 81/200 [00:16&lt;00:23,  5.01it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  30%|█████████████████▍                                       | 61/200 [00:13&lt;00:26,  5.31it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  42%|████████████████████████                                  | 83/200 [00:16&lt;00:20,  5.65it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  32%|█████████████████▉                                       | 63/200 [00:13&lt;00:20,  6.78it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  42%|████████████████████████▋                                 | 85/200 [00:16&lt;00:16,  6.94it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  32%|██████████████████▏                                      | 64/200 [00:13&lt;00:23,  5.75it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  44%|█████████████████████████▏                                | 87/200 [00:19&lt;00:50,  2.22it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  32%|██████████████████▌                                      | 65/200 [00:13&lt;00:23,  5.68it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  44%|█████████████████████████▌                                | 88/200 [00:19&lt;00:47,  2.36it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  33%|██████████████████▊                                      | 66/200 [00:14&lt;00:24,  5.48it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  46%|██████████████████████████▍                               | 91/200 [00:19&lt;00:32,  3.40it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  34%|███████████████████▋                                     | 69/200 [00:14&lt;00:20,  6.48it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  46%|██████████████████████████▋                               | 92/200 [00:20&lt;00:28,  3.73it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  35%|███████████████████▉                                     | 70/200 [00:14&lt;00:21,  6.04it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  46%|██████████████████████████▉                               | 93/200 [00:20&lt;00:27,  3.93it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  36%|████████████████████▏                                    | 71/200 [00:15&lt;00:31,  4.15it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  47%|███████████████████████████▎                              | 94/200 [00:20&lt;00:23,  4.48it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  36%|████████████████████▊                                    | 73/200 [00:15&lt;00:23,  5.33it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  48%|███████████████████████████▊                              | 96/200 [00:20&lt;00:20,  5.20it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  37%|█████████████████████                                    | 74/200 [00:15&lt;00:23,  5.30it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  49%|████████████████████████████▍                             | 98/200 [00:20&lt;00:18,  5.65it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  38%|█████████████████████▍                                   | 75/200 [00:15&lt;00:24,  5.06it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  50%|████████████████████████████▋                             | 99/200 [00:21&lt;00:17,  5.69it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  38%|█████████████████████▋                                   | 76/200 [00:15&lt;00:24,  5.04it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  50%|████████████████████████████▊                            | 101/200 [00:23&lt;00:54,  1.82it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  39%|██████████████████████▏                                  | 78/200 [00:16&lt;00:19,  6.39it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  52%|█████████████████████████████▎                           | 103/200 [00:23&lt;00:37,  2.56it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  40%|██████████████████████▌                                  | 79/200 [00:16&lt;00:19,  6.25it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  52%|█████████████████████████████▋                           | 104/200 [00:23&lt;00:33,  2.85it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  40%|██████████████████████▊                                  | 80/200 [00:16&lt;00:21,  5.57it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  52%|█████████████████████████████▉                           | 105/200 [00:23&lt;00:28,  3.31it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  40%|███████████████████████                                  | 81/200 [00:17&lt;00:43,  2.74it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  53%|██████████████████████████████▏                          | 106/200 [00:24&lt;00:42,  2.19it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  42%|███████████████████████▉                                 | 84/200 [00:17&lt;00:25,  4.47it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  54%|██████████████████████████████▊                          | 108/200 [00:25&lt;00:28,  3.27it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  42%|████████████████████████▏                                | 85/200 [00:18&lt;00:27,  4.19it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  55%|███████████████████████████████                          | 109/200 [00:25&lt;00:29,  3.12it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  43%|████████████████████████▌                                | 86/200 [00:18&lt;00:24,  4.58it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  56%|███████████████████████████████▋                         | 111/200 [00:26&lt;00:35,  2.53it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  44%|█████████████████████████▎                               | 89/200 [00:18&lt;00:16,  6.66it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  56%|████████████████████████████████▏                        | 113/200 [00:26&lt;00:28,  3.10it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  45%|█████████████████████████▋                               | 90/200 [00:18&lt;00:21,  5.15it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  57%|████████████████████████████████▍                        | 114/200 [00:27&lt;00:26,  3.31it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  46%|█████████████████████████▉                               | 91/200 [00:19&lt;00:23,  4.61it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  58%|█████████████████████████████████                        | 116/200 [00:27&lt;00:20,  4.03it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  47%|██████████████████████████▊                              | 94/200 [00:19&lt;00:18,  5.76it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  59%|█████████████████████████████████▋                       | 118/200 [00:27&lt;00:20,  4.00it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  48%|███████████████████████████                              | 95/200 [00:19&lt;00:22,  4.66it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  60%|█████████████████████████████████▉                       | 119/200 [00:28&lt;00:19,  4.23it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  48%|███████████████████████████▎                             | 96/200 [00:20&lt;00:20,  5.09it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  60%|██████████████████████████████████▍                      | 121/200 [00:28&lt;00:15,  5.21it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  50%|████████████████████████████▏                            | 99/200 [00:20&lt;00:13,  7.43it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  62%|███████████████████████████████████                      | 123/200 [00:28&lt;00:15,  4.82it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  50%|████████████████████████████                            | 100/200 [00:20&lt;00:18,  5.29it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  62%|███████████████████████████████████▎                     | 124/200 [00:28&lt;00:14,  5.24it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  52%|████████████████████████████▊                           | 103/200 [00:20&lt;00:13,  7.42it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  64%|████████████████████████████████████▍                    | 128/200 [00:29&lt;00:12,  5.63it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  52%|█████████████████████████████▍                          | 105/200 [00:24&lt;00:55,  1.72it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  64%|████████████████████████████████████▊                    | 129/200 [00:29&lt;00:16,  4.32it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  56%|███████████████████████████████▎                        | 112/200 [00:24&lt;00:21,  4.06it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  57%|████████████████████████████████▏                       | 115/200 [00:26&lt;00:30,  2.82it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  60%|█████████████████████████████████▎                      | 119/200 [00:26&lt;00:20,  3.88it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  60%|█████████████████████████████████▉                      | 121/200 [00:26&lt;00:19,  4.02it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  62%|██████████████████████████████████▍                     | 123/200 [00:27&lt;00:16,  4.77it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  62%|███████████████████████████████████                     | 125/200 [00:27&lt;00:15,  4.78it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  64%|███████████████████████████████████▌                    | 127/200 [00:27&lt;00:12,  5.66it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  64%|████████████████████████████████████                    | 129/200 [00:27&lt;00:11,  5.93it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  65%|████████████████████████████████████▍                   | 130/200 [00:28&lt;00:12,  5.74it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  66%|████████████████████████████████████▋                   | 131/200 [00:28&lt;00:11,  5.76it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  66%|█████████████████████████████████████▏                  | 133/200 [00:28&lt;00:10,  6.26it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  67%|█████████████████████████████████████▌                  | 134/200 [00:28&lt;00:10,  6.34it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  68%|█████████████████████████████████████▊                  | 135/200 [00:28&lt;00:10,  6.34it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  68%|██████████████████████████████████████                  | 136/200 [00:29&lt;00:09,  6.71it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  69%|██████████████████████████████████████▋                 | 138/200 [00:29&lt;00:08,  6.96it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  70%|██████████████████████████████████████▉                 | 139/200 [00:29&lt;00:08,  6.84it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  70%|███████████████████████████████████████▍                | 141/200 [00:29&lt;00:08,  6.75it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running experiments...:  71%|███████████████████████████████████████▊                | 142/200 [00:29&lt;00:12,  4.75it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Process ForkPoolWorker-4:
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Process ForkPoolWorker-5:
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Process ForkPoolWorker-2:
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Process ForkPoolWorker-4:
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Process ForkPoolWorker-3:
@@ -711,6 +754,10 @@ x_i(t + 1) = \frac{1}{|I|}\sum_{j\in I}x_j (t)
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/process.py&quot;, line 108, in run
+    self._target(*self._args, **self._kwargs)
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
 </pre></div>
 </div>
@@ -725,77 +772,21 @@ x_i(t + 1) = \frac{1}{|I|}\sum_{j\in I}x_j (t)
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/process.py&quot;, line 315, in _bootstrap
     self.run()
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/process.py&quot;, line 315, in _bootstrap
-    self.run()
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/process.py&quot;, line 315, in _bootstrap
-    self.run()
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/process.py&quot;, line 315, in _bootstrap
-    self.run()
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/process.py&quot;, line 315, in _bootstrap
-    self.run()
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/process.py&quot;, line 108, in run
-    self._target(*self._args, **self._kwargs)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/process.py&quot;, line 108, in run
-    self._target(*self._args, **self._kwargs)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/process.py&quot;, line 108, in run
-    self._target(*self._args, **self._kwargs)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/process.py&quot;, line 108, in run
-    self._target(*self._args, **self._kwargs)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/process.py&quot;, line 108, in run
-    self._target(*self._args, **self._kwargs)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/pool.py&quot;, line 125, in worker
-    result = (True, func(*args, **kwds))
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/pool.py&quot;, line 125, in worker
-    result = (True, func(*args, **kwds))
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/pool.py&quot;, line 125, in worker
-    result = (True, func(*args, **kwds))
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/pool.py&quot;, line 125, in worker
-    result = (True, func(*args, **kwds))
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/dev/formal_epistemology/computational_social_epistemology/opinion_dynamics.py&quot;, line 151, in run_model
-    model.run()
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/dev/formal_epistemology/computational_social_epistemology/opinion_dynamics.py&quot;, line 151, in run_model
-    model.run()
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/dev/formal_epistemology/computational_social_epistemology/opinion_dynamics.py&quot;, line 151, in run_model
-    model.run()
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/dev/formal_epistemology/computational_social_epistemology/opinion_dynamics.py&quot;, line 151, in run_model
-    model.run()
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/process.py&quot;, line 315, in _bootstrap
+    self.run()
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/process.py&quot;, line 315, in _bootstrap
+    self.run()
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/jbard/anaconda3/lib/python3.9/multiprocessing/process.py&quot;, line 108, in run
+    self._target(*self._args, **self._kwargs)
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -855,14 +846,14 @@ x_i(t + 1) = \frac{1}{|I|}\sum_{j\in I}x_j (t)
 </section>
 <section id="cota-asimetrica">
 <h2>Cota asimétrica<a class="headerlink" href="#cota-asimetrica" title="Permalink to this heading">#</a></h2>
-<p>En Hegselmann, Krause (2002) se consideran dos casos de cotas asimétricas.</p>
+<p>En <span id="id7">[]</span> se consideran dos casos de cotas asimétricas.</p>
 <p>En el primero de los casos, todos los agentes tienen los mismos valores para <span class="math notranslate nohighlight">\(\epsilon\)</span>, con <span class="math notranslate nohighlight">\(\epsilon_l \neq \epsilon_r\)</span>. Esto podría interpretarse como una situación en donde todos los agentes se ven más dispuestos a admitir opiniones más tendientes a alguno de los dos lados del espectro de opiniones. Puede interpretarse como una tendencia en toda la comunidad. Me imagino que igual esto no va a terminar generando un patrón de polarización sino de consenso en alguno de los dos extremos del espectro.</p>
 <p>En el segundo de los casos, la asimetría entre las incertidumbres depende de la opinión que tiene el agente. De este modo, agentes con opiniones más cercanas a la derecha del espectro tendrán una cota más tirada al lado derecho, y viceversa. Creo que esta última es una buena representación de lo que sucede en un momento de polarización: los agentes más tirados hacia un costado del espectro de opiniones van a tener una tendencia mayor a considerar opiniones que estén en ese costado. Adicionalmente, creo que este fenómeno se completaría en la medida en que la incertidumbre y la asimetría también se actualicen en cada paso de la simulación. Eso se parece bastante al modelo de acuerdo relativo. De hecho creo que el caso en donde hay extremistas en la población es precisamente este. A chequear.</p>
 <section id="asimetria-independiente-de-la-opinion">
 <h3>Asimetría independiente de la opinión<a class="headerlink" href="#asimetria-independiente-de-la-opinion" title="Permalink to this heading">#</a></h3>
 <p>En este caso, cada <span class="math notranslate nohighlight">\(\epsilon\)</span> queda fijo a lo largo de toda la simulación</p>
-<section id="id1">
-<h4>Experimentos<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<section id="id8">
+<h4>Experimentos<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
 <p>Los siguientes experimentos replican los mismos patrones ya reportados, con la diferencia que ahora la dinámica de los agentes tiende a agruparse más cerca del extremo superior de la distribución. Esto es resultado de utilizar un nivel mayor de incertidumbre del lado derecho del intervalo. La traducción de este parámetro es que los agentes tendrán mayor disposición a actualizar sus opiniones con otros agentes que estén más hacia su “derecha”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -944,7 +935,7 @@ x_i(t + 1) = \frac{1}{|I|}\sum_{j\in I}x_j (t)
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="relative-agreement">
 <h1>Relative agreement<a class="headerlink" href="#relative-agreement" title="Permalink to this heading">#</a></h1>
-<p>Los modelos de relative agreement fueron propuestos en Deffuant et al. (2002) como una extensión del modelo de confianza acotada.</p>
+<p>Los modelos de relative agreement fueron propuestos en <span id="id9">[]</span> como una extensión del modelo de confianza acotada.</p>
 <p>Estos modelos son similares a aquellos de confianza acotada en cuanto a que los vecinos con los que un agente actualiza su opinión son únicamente aquellos que piensen parecido a él, <em>i.e.</em>, es un modelo no lineal. Sin embargo, estos modelos tienen dos diferencias importantes.</p>
 <p>La primera diferencia es que cada agente actualiza su opinión con respecto a otro agente, es decir, las interacciones son de a pares. Por el contrario, en el modelo de confianza acotada cada agente actualizaba su opinión a partir de las opiniones de todos los otros agentes que pensaran como él.</p>
 <p>La segunda diferencia es que en el modelo de relative agreement la influencia que tenga un agente sobre otro va a depender del grado de superposición que haya entre las opiniones de cada uno y de cuánta confianza tenga cada agente. Esto queda explicado en la siguiente figura</p>
@@ -1082,17 +1073,6 @@ u_j &amp;:= u_j + \mu \left[ (h_{ij} / u_i) -1 \right] (u_i - u_j)\end{split}\\\
 </section>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="referencias">
-<h1>Referencias<a class="headerlink" href="#referencias" title="Permalink to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Bramson, Grim, Singer, Berger, Sack, Fisher, Flocken, Holman (2017) Understanding Polarization: Meanings, Measures, and Model Evaluation</p></li>
-<li><p>Deffuant, Amblard, Weisbuch, Faure (2002) - How can extremism prevail? A study based on the relative agreement interaction model</p></li>
-<li><p>Deffuant (2006) - Comparing Extremism Propagation Patterns in Continuous Opinion Models</p></li>
-<li><p>Hegselmann, Krause (2002) - Opinion Dynamics and Bounded Confidence: Models, Analysis and Simulation</p></li>
-<li><p>Hegselmann, Krause (2006) - Opinion Dynamics Driven by Various Ways of Averaging</p></li>
-<li><p>Meadows, Cliff (2012) - Reexamining the Relative Agreement Model of Opinion Dynamics</p></li>
-</ul>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1168,7 +1148,7 @@ u_j &amp;:= u_j + \mu \left[ (h_{ij} / u_i) -1 \right] (u_i - u_j)\end{split}\\\
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-sistematico">Análisis sistemático</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cota-asimetrica">Cota asimétrica</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asimetria-independiente-de-la-opinion">Asimetría independiente de la opinión</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Experimentos</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Experimentos</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asimetria-dependiente-de-la-opinion">Asimetría dependiente de la opinión</a></li>
@@ -1185,7 +1165,6 @@ u_j &amp;:= u_j + \mu \left[ (h_{ij} / u_i) -1 \right] (u_i - u_j)\end{split}\\\
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referencias</a></li>
 </ul>
 
   </nav></div>

@@ -2,3 +2,6 @@ title: Epistemología social computacional
 author: Joaquín Bardauil
 execute:
   execute_notebooks: force
+
+bibtex_bibfiles:
+  - references.bib

@@ -106,10 +106,12 @@ class BatchSimulaciones:
     def __init__(self,
                  models: List[object],
                  epsilons: np.array,
-                 bins: int):
+                 bins: int,
+                 v: bool = False):
         self.models = models
         self.epsilons = epsilons
         self.bins = bins
+        self.v = v
 
         self.relative_frequencies = None
 
@@ -121,11 +123,16 @@ class BatchSimulaciones:
         se promedian los histogramas del último perfil de opinión"""
         updated_models = []
         # se aprovecha procesamiento paralelo para acelerar resultados
-        with Pool(5) as pool:
-            with tqdm(total=len(self.models), desc='Running experiments...') as pbar:
-                # ejecución de la simulación para cada instancia
+        if self.v:
+            with Pool(5) as pool:
+                with tqdm(total=len(self.models), desc='Running experiments...') as pbar:
+                    # ejecución de la simulación para cada instancia
+                    for model in pool.imap(BatchSimulaciones.run_model, self.models):
+                        pbar.update(1)
+                        updated_models.append(model)
+        else:
+            with Pool(5) as pool:
                 for model in pool.imap(BatchSimulaciones.run_model, self.models):
-                    pbar.update(1)
                     updated_models.append(model)
         # creación de estadísticos para todas las simulaciones
         relative_frequencies = []

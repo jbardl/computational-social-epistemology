@@ -32,8 +32,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['reps = 5', 'bins = 100', 'num_epsilons = 40', 'min_epsilon, max_epsilon = .01, .4', 'epsilons = np.linspace(start = min_epsilon, ']
+['import plotly.offline as py', 'reps = 5', 'bins = 100', 'num_epsilons = 40', 'min_epsilon, max_epsilon = .01, .4']
 ...
-['    bins     = 100', ')', '', 'batch_simulaciones.run_experiments()', 'batch_simulaciones.plot_results()']
+['    bins     = 100', ')', '', 'batch_simulaciones.run_experiments()', '# fig = batch_simulaciones.plot_results(show=False)']
 -------------------
 

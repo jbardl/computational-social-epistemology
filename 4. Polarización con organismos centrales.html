@@ -54,6 +54,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -67,6 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '4. Polarización con organismos centrales';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Referencias" href="references.html" />
     <link rel="prev" title="Definiciones de polarización" href="3.%20Dinamica%20de%20opiniones.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -172,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Polarización con organismos centrales</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="references.html">Referencias</a></li>
 </ul>
 
     </div>
@@ -357,7 +360,7 @@ document.write(`
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="modelo-de-dinamica-de-opiniones-ja-jager-amblard">
 <h1>Modelo de dinámica de opiniones JA (Jager, Amblard)<a class="headerlink" href="#modelo-de-dinamica-de-opiniones-ja-jager-amblard" title="Permalink to this heading">#</a></h1>
-<p>El modelo de dinámica de opiniones JA es presentado en <span id="id1">[]</span>. Su objetivo es ofrecer una reconstrucción formal de la Teoría del Juicio Social (SJT) <span id="id2">[]</span>. El mecanismo utilizando en esta reconstrucción es similar al modelo de Bounded Confidence <span id="id3">[]</span> y de Relative Agreement <span id="id4">[]</span> en la medida en que la simulación consiste de una población de agentes con opiniones continuas que en cada paso actualizan sus opiniones dialogando con los agentes que se parecen a ellos.</p>
+<p>El modelo de dinámica de opiniones JA es presentado en <span id="id1">[<a class="reference internal" href="references.html#id9" title="Wander Jager and Frédéric Amblard. Uniformity, bipolarization and pluriformity captured as generic stylized behavior with an agent-based simulation model of attitude change. Computational &amp; Mathematical Organization Theory, 10:295-303, 01 2005. doi:10.1007/s10588-005-6282-2.">Jager and Amblard, 2005</a>]</span>. Su objetivo es ofrecer una reconstrucción formal de la Teoría del Juicio Social (SJT) <span id="id2">[<a class="reference internal" href="references.html#id12" title="Muzafer Sherif and Carl Iver Hovland. Social judgment: assimilation and contrast effects in communication and attitude change. Yale University Press, 1961.">Sherif and Hovland, 1961</a>]</span>. El mecanismo utilizando en esta reconstrucción es similar al modelo de Bounded Confidence <span id="id3">[<a class="reference internal" href="references.html#id7" title="Rainer Hegselmann and Ulrich Krause. Opinion dynamics and bounded confidence models, analysis and simulation. Journal of Artificial Societies and Social Simulation, 5:, 07 2002.">Hegselmann and Krause, 2002</a>]</span> y de Relative Agreement <span id="id4">[<a class="reference internal" href="references.html#id4" title="Guillaume Deffuant, Frédéric Amblard, Gérard Weisbuch, and Thierry Faure. How can extremism prevail? a study based on the relative agreement interaction model. J. Artificial Societies and Social Simulation, 5:, 10 2002.">Deffuant <em>et al.</em>, 2002</a>]</span> en la medida en que la simulación consiste de una población de agentes con opiniones continuas que en cada paso actualizan sus opiniones dialogando con los agentes que se parecen a ellos.</p>
 <p>La novedad de este modelo es que distingue <em>tres actitudes</em> que los agentes pueden tomar frente a nueva información:</p>
 <ul class="simple">
 <li><p><strong>Aceptación</strong>: cuando una opinión es lo suficientemente similar a la opinión de un agente (es decir, cuando cae dentro de su <em>latitud de aceptación</em>), el segundo agente actualizará sus opinión acercándose a la opinión nueva.</p></li>
@@ -503,19 +506,19 @@ T = 0.6
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                          | 0/100 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                           | 0/100 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 55%|████████████████████████████████████████████                                    | 55/100 [00:00&lt;00:00, 544.91it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 54%|███████████████████████████████████████████▋                                     | 54/100 [00:00&lt;00:00, 539.12it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 58%|██████████████████████████████████████████████▍                                 | 58/100 [00:00&lt;00:00, 522.46it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 71%|█████████████████████████████████████████████████████████▌                       | 71/100 [00:00&lt;00:00, 519.55it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<img alt="_images/c2e362a02896df28af0dae0fc5e8301ff8d525353af245aad029f5107e193841.png" src="_images/c2e362a02896df28af0dae0fc5e8301ff8d525353af245aad029f5107e193841.png" />
+<img alt="_images/7204851deed94d30239aa913ebaa8931d8f6e740c9b2ad6420ad9f5cb88fe119.png" src="_images/7204851deed94d30239aa913ebaa8931d8f6e740c9b2ad6420ad9f5cb88fe119.png" />
 </div>
 </div>
 </section>
@@ -545,19 +548,19 @@ T = 1.6
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                          | 0/100 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                           | 0/100 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 59%|███████████████████████████████████████████████▏                                | 59/100 [00:00&lt;00:00, 582.25it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 59%|███████████████████████████████████████████████▊                                 | 59/100 [00:00&lt;00:00, 583.60it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████████████████████| 100/100 [00:00&lt;00:00, 549.15it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00&lt;00:00, 567.95it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<img alt="_images/f1c28de83aa2f81de495603d0592064b25a075b9d00a1a8f71c60ee716fa1606.png" src="_images/f1c28de83aa2f81de495603d0592064b25a075b9d00a1a8f71c60ee716fa1606.png" />
+<img alt="_images/1085771fd4d736935b74bedd9bd45cc0b2f4b82c5c00df0a9ccf8fc5967f5226.png" src="_images/1085771fd4d736935b74bedd9bd45cc0b2f4b82c5c00df0a9ccf8fc5967f5226.png" />
 </div>
 </div>
 </section>
@@ -588,19 +591,19 @@ T = 1.2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                          | 0/100 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                           | 0/100 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 55%|████████████████████████████████████████████                                    | 55/100 [00:00&lt;00:00, 544.00it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|█████████████████████████████████████████████▎                                   | 56/100 [00:00&lt;00:00, 551.42it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████████████████████| 100/100 [00:00&lt;00:00, 531.32it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00&lt;00:00, 542.94it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<img alt="_images/8df1a33f7e51861082966f7cf568d473c9905a704ea039380b779187fcba9575.png" src="_images/8df1a33f7e51861082966f7cf568d473c9905a704ea039380b779187fcba9575.png" />
+<img alt="_images/678e188223873fc950b34195f511c1d1030af3ce2472629678e78fb5352c9714.png" src="_images/678e188223873fc950b34195f511c1d1030af3ce2472629678e78fb5352c9714.png" />
 </div>
 </div>
 </section>
@@ -673,22 +676,19 @@ T = 1.2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                          | 0/100 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                           | 0/100 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 34%|███████████████████████████▏                                                    | 34/100 [00:00&lt;00:00, 330.61it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 34%|███████████████████████████▌                                                     | 34/100 [00:00&lt;00:00, 337.86it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 68%|██████████████████████████████████████████████████████▍                         | 68/100 [00:00&lt;00:00, 326.48it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 69%|███████████████████████████████████████████████████████▏                        | 69/100 [00:00&lt;00:00, 303.99it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 51%|█████████████████████████████████████████▎                                       | 51/100 [00:00&lt;00:00, 324.97it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<img alt="_images/f5a8a58a56e972e7275c61f7aa972e3b5c73e8924d8f68785774e6cbae13cfed.png" src="_images/f5a8a58a56e972e7275c61f7aa972e3b5c73e8924d8f68785774e6cbae13cfed.png" />
+<img alt="_images/cb7a8218df80688e35ff64d7529fe72a41cb200deed4fc56d34caeb264de4ab5.png" src="_images/cb7a8218df80688e35ff64d7529fe72a41cb200deed4fc56d34caeb264de4ab5.png" />
 </div>
 </div>
 </section>
@@ -714,22 +714,22 @@ T = 1.2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                          | 0/100 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                           | 0/100 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|████████████████████████████                                                    | 35/100 [00:00&lt;00:00, 343.70it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|████████████████████████████▎                                                    | 35/100 [00:00&lt;00:00, 348.49it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|████████████████████████████████████████████████████████                        | 70/100 [00:00&lt;00:00, 338.55it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 71%|█████████████████████████████████████████████████████████▌                       | 71/100 [00:00&lt;00:00, 353.04it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████████████████████| 100/100 [00:00&lt;00:00, 337.74it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00&lt;00:00, 352.04it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<img alt="_images/94a056cd737d149b4d428dcc310f4b37457f36eb8357985219dcdecc36a6d175.png" src="_images/94a056cd737d149b4d428dcc310f4b37457f36eb8357985219dcdecc36a6d175.png" />
+<img alt="_images/e81e257820a29f0d2824eef7dace4e107156cab9f4fa2a1dd6ee58f78a39440a.png" src="_images/e81e257820a29f0d2824eef7dace4e107156cab9f4fa2a1dd6ee58f78a39440a.png" />
 </div>
 </div>
 </section>
@@ -755,19 +755,22 @@ T = 1.2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                          | 0/100 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                           | 0/100 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|████████████████████████████                                                    | 35/100 [00:00&lt;00:00, 345.39it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|████████████████████████████▎                                                    | 35/100 [00:00&lt;00:00, 343.19it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 64%|███████████████████████████████████████████████████▏                            | 64/100 [00:00&lt;00:00, 328.57it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|████████████████████████████████████████████████████████▋                        | 70/100 [00:00&lt;00:00, 342.44it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00&lt;00:00, 342.55it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<img alt="_images/e71b7b1a1e9291d1443e423da5b2432a7f313a71bda15a14cc90e1d7e33b5b46.png" src="_images/e71b7b1a1e9291d1443e423da5b2432a7f313a71bda15a14cc90e1d7e33b5b46.png" />
+<img alt="_images/99b73aab9c73dd09acc1c6175d0a8f723f0e21e4f1309aa7d36aa6cc58c7e8a5.png" src="_images/99b73aab9c73dd09acc1c6175d0a8f723f0e21e4f1309aa7d36aa6cc58c7e8a5.png" />
 </div>
 </div>
 </section>
@@ -812,6 +815,15 @@ T = 1.2
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Definiciones de polarización</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="references.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Referencias</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

@@ -241,7 +241,7 @@ class RelativeAgreementModel:
                  epochs: int,
                  opinion_range: Tuple[float] = (-1., 1.),
                  uncertainty: float = .4,
-                 v: bool = True):
+                 v: bool = False):
         self.n = n
         self.mu = mu
         self.epochs = epochs
@@ -320,7 +320,7 @@ class RAModelExtremists(RelativeAgreementModel):
                  global_proportion: float,
                  delta: float,
                  opinion_range: Tuple[float] = (-1., 1.),
-                 v: bool = True):
+                 v: bool = False):
         super().__init__(n, mu, epochs,
                          opinion_range,
                          uncertainty, v)

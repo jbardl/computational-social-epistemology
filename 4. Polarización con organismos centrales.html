@@ -375,10 +375,11 @@ document.write(`
 </ul>
 <p>De esta forma pueden modelarse agentes con distintas estructuras actitudinales. Por ejemplo, un agente muy egocéntrico será un agente donde <span class="math notranslate nohighlight">\(t_i\)</span> sea apenas más grande o igual a <span class="math notranslate nohighlight">\(u_i\)</span>, de manera que rechazará inmediatamente todo aquello que no acepte.</p>
 <p>La simulación es de a pares, <em>i.e.</em>, en cada paso de la simulación se establecen pares de agentes para que se comuniquen entre sí (similar al modelo RA). En cada paso, la influencia que tendrá un agente sobre otro queda determinada por las siguientes reglas</p>
-<p>\begin{align}
-\text{Si} \ |x_i - x_j| &lt; u_i \quad \delta x_i &amp;= \mu \cdot (x_j - x_i)\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\text{Si} \ |x_i - x_j| &lt; u_i \quad \delta x_i &amp;= \mu \cdot (x_j - x_i)\\
 \text{Si} \ |x_i - x_j| &gt; t_i \quad \delta x_i &amp;= \mu \cdot (x_i - x_j)
-\end{align}</p>
+\end{align*}\]</div>
 <p>Una vez definida la influencia, la nueva opinión del agente es el resultado de sumar su antigua opinión con la influencia recibida (acotado a los valores máximo y mínimo de la distribución):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -390,8 +391,7 @@ max(-1, \ x_i + \delta x_i) &amp; \text{si } x_i + \delta x_i &lt; 0
 <p>En una primera instancia, el modelo se inicializa con las opiniones de los agentes tomadas de una distribució uniforme entre <span class="math notranslate nohighlight">\(\left[ -1; 1 \right]\)</span>, y con una misma incertidumbre <span class="math notranslate nohighlight">\(U\)</span> y un mismo umbral de rechazo <span class="math notranslate nohighlight">\(T\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -401,9 +401,8 @@ max(-1, \ x_i + \delta x_i) &amp; \text{si } x_i + \delta x_i &lt; 0
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
-<span class="k">class</span> <span class="nc">SocialJudgementModel</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SocialJudgementModel</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">=</span> <span class="n">mu</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">u</span>
@@ -419,7 +418,8 @@ max(-1, \ x_i + \delta x_i) &amp; \text{si } x_i + \delta x_i &lt; 0
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">init_params</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">)):</span>
+        <span class="n">iterator</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="k">else</span> <span class="n">iterator</span><span class="p">:</span>
             <span class="c1"># correr update sobre el últio perfil de opinión</span>
             <span class="n">new_opinion_profile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_opinion_profile</span><span class="p">)</span>
             <span class="c1"># agregar el resultado a la historia</span>
@@ -491,8 +491,7 @@ T = 0.6
 <p>En una simulación con este tipo de agentes, el resultado obtenido es un patrón de polarización en los extremos. Esto ocurre ya que los agentes serán muy propensos a contrastar con otros agentes, ya que su región de rechazo será muy grande.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
-<span class="n">sjtm</span> <span class="o">=</span> <span class="n">SocialJudgementModel</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sjtm</span> <span class="o">=</span> <span class="n">SocialJudgementModel</span><span class="p">(</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span>
     <span class="n">mu</span> <span class="o">=</span> <span class="mf">.1</span><span class="p">,</span>
     <span class="n">u</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span>
@@ -506,19 +505,7 @@ T = 0.6
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                           | 0/100 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 54%|███████████████████████████████████████████▋                                     | 54/100 [00:00&lt;00:00, 539.12it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 71%|█████████████████████████████████████████████████████████▌                       | 71/100 [00:00&lt;00:00, 519.55it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<img alt="_images/7204851deed94d30239aa913ebaa8931d8f6e740c9b2ad6420ad9f5cb88fe119.png" src="_images/7204851deed94d30239aa913ebaa8931d8f6e740c9b2ad6420ad9f5cb88fe119.png" />
+<img alt="_images/2e97aae7e6d50f9cbd1aedad07e4f40d16230833b2a2640d2a070a21a0d35d6f.png" src="_images/2e97aae7e6d50f9cbd1aedad07e4f40d16230833b2a2640d2a070a21a0d35d6f.png" />
 </div>
 </div>
 </section>
@@ -533,8 +520,7 @@ T = 1.6
 <p>En una simulación de este tipo, el resultado será que los agentes converjan a una opinión central.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
-<span class="n">sjtm</span> <span class="o">=</span> <span class="n">SocialJudgementModel</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sjtm</span> <span class="o">=</span> <span class="n">SocialJudgementModel</span><span class="p">(</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span>
     <span class="n">mu</span> <span class="o">=</span> <span class="mf">.1</span><span class="p">,</span>
     <span class="n">u</span> <span class="o">=</span> <span class="mf">1.2</span><span class="p">,</span>
@@ -548,19 +534,7 @@ T = 1.6
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                           | 0/100 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 59%|███████████████████████████████████████████████▊                                 | 59/100 [00:00&lt;00:00, 583.60it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00&lt;00:00, 567.95it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<img alt="_images/1085771fd4d736935b74bedd9bd45cc0b2f4b82c5c00df0a9ccf8fc5967f5226.png" src="_images/1085771fd4d736935b74bedd9bd45cc0b2f4b82c5c00df0a9ccf8fc5967f5226.png" />
+<img alt="_images/a5db711ed5cf834c4ac2f101a2d443e93f33a3d0498660e0f5437ad3088ee86d.png" src="_images/a5db711ed5cf834c4ac2f101a2d443e93f33a3d0498660e0f5437ad3088ee86d.png" />
 </div>
 </div>
 </section>
@@ -576,8 +550,7 @@ T = 1.2
 <p>El resultado de esta simulación reflejará tanto un patrón de convergencia central como también un patrón de polarización en los extremos. Esto se produce ya que los agentes que se inicializan cerca de la opinón central tenderán a ponerse de acuerdo entre sí y quedarse cerca de la media, mientras que los agentes que comienzan con opiniones extremas se opondrán a los del otro extremo y se segregarán.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
-<span class="n">sjtm</span> <span class="o">=</span> <span class="n">SocialJudgementModel</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sjtm</span> <span class="o">=</span> <span class="n">SocialJudgementModel</span><span class="p">(</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span>
     <span class="n">mu</span> <span class="o">=</span> <span class="mf">.1</span><span class="p">,</span>
     <span class="n">u</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span>
@@ -591,19 +564,7 @@ T = 1.2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                           | 0/100 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|█████████████████████████████████████████████▎                                   | 56/100 [00:00&lt;00:00, 551.42it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00&lt;00:00, 542.94it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<img alt="_images/678e188223873fc950b34195f511c1d1030af3ce2472629678e78fb5352c9714.png" src="_images/678e188223873fc950b34195f511c1d1030af3ce2472629678e78fb5352c9714.png" />
+<img alt="_images/982b1745bfe35734237f4bd95b8a0e555dbacd4c47e6809b03a37b30389db050.png" src="_images/982b1745bfe35734237f4bd95b8a0e555dbacd4c47e6809b03a37b30389db050.png" />
 </div>
 </div>
 </section>
@@ -615,10 +576,9 @@ T = 1.2
 <p>En términos del modelo, un organismo central <span class="math notranslate nohighlight">\(O\)</span> se define como una señal constante que todos los agentes recibirán por igual. De esta manera, en cada paso de la simulación los agentes actualizarán su opinión con respecto a la señal recibida por parte del organismo central, y luego actualizarán sus creencias a partir de la interacción con otro agente.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
-<span class="k">class</span> <span class="nc">CentralOrganismModel</span><span class="p">(</span><span class="n">SocialJudgementModel</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CentralOrganismModel</span><span class="p">(</span><span class="n">SocialJudgementModel</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">o</span>
 
@@ -660,8 +620,7 @@ T = 1.2
 <p>Este primer ressultado ya es muy sugerente. A diferencia de la simulación sin un organismo central, se observa que la presencia de este agente produce un gran factor de polarización.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
-<span class="n">com</span> <span class="o">=</span> <span class="n">CentralOrganismModel</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">com</span> <span class="o">=</span> <span class="n">CentralOrganismModel</span><span class="p">(</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span>
     <span class="n">mu</span> <span class="o">=</span> <span class="mf">.1</span><span class="p">,</span>
     <span class="n">u</span> <span class="o">=</span> <span class="mf">.4</span><span class="p">,</span>
@@ -676,19 +635,7 @@ T = 1.2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                           | 0/100 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 34%|███████████████████████████▌                                                     | 34/100 [00:00&lt;00:00, 337.86it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 51%|█████████████████████████████████████████▎                                       | 51/100 [00:00&lt;00:00, 324.97it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<img alt="_images/cb7a8218df80688e35ff64d7529fe72a41cb200deed4fc56d34caeb264de4ab5.png" src="_images/cb7a8218df80688e35ff64d7529fe72a41cb200deed4fc56d34caeb264de4ab5.png" />
+<img alt="_images/ae6b97d099990403cc0797f85929239cbcbce299656e0c636c4f63cd266b1a1a.png" src="_images/ae6b97d099990403cc0797f85929239cbcbce299656e0c636c4f63cd266b1a1a.png" />
 </div>
 </div>
 </section>
@@ -698,8 +645,7 @@ T = 1.2
 <p>Esto sucede porque los agentes tienen una alta probabilidad de aceptar una opinión diferente a la suya por más que sea muy diferente. Por lo tanto, incluso los agentes que empiezan la simulación pensando muy diferente de la señal pública terminan adoptándola</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
-<span class="n">com</span> <span class="o">=</span> <span class="n">CentralOrganismModel</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">com</span> <span class="o">=</span> <span class="n">CentralOrganismModel</span><span class="p">(</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span>
     <span class="n">mu</span> <span class="o">=</span> <span class="mf">.1</span><span class="p">,</span>
     <span class="n">u</span> <span class="o">=</span> <span class="mf">1.2</span><span class="p">,</span>
@@ -714,22 +660,7 @@ T = 1.2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                           | 0/100 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|████████████████████████████▎                                                    | 35/100 [00:00&lt;00:00, 348.49it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 71%|█████████████████████████████████████████████████████████▌                       | 71/100 [00:00&lt;00:00, 353.04it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00&lt;00:00, 352.04it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<img alt="_images/e81e257820a29f0d2824eef7dace4e107156cab9f4fa2a1dd6ee58f78a39440a.png" src="_images/e81e257820a29f0d2824eef7dace4e107156cab9f4fa2a1dd6ee58f78a39440a.png" />
+<img alt="_images/44b0bf572a81cbbc32921c85ec3beecf42eab886a51f20329ceb7888fc358377.png" src="_images/44b0bf572a81cbbc32921c85ec3beecf42eab886a51f20329ceb7888fc358377.png" />
 </div>
 </div>
 </section>
@@ -739,8 +670,7 @@ T = 1.2
 <p>Sin embargo, se puede observar que el grupo de agentes que comienzan la simulación en el centro de la distribución se corre un poco respecto de la señal pública. Esto indica que la presencia de un organismo central aporta a una dinámica de corrimiento hacia los extremos de las opiniones.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
-<span class="n">com</span> <span class="o">=</span> <span class="n">CentralOrganismModel</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">com</span> <span class="o">=</span> <span class="n">CentralOrganismModel</span><span class="p">(</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span>
     <span class="n">mu</span> <span class="o">=</span> <span class="mf">.1</span><span class="p">,</span>
     <span class="n">u</span> <span class="o">=</span> <span class="mf">.4</span><span class="p">,</span>
@@ -755,22 +685,7 @@ T = 1.2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                           | 0/100 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|████████████████████████████▎                                                    | 35/100 [00:00&lt;00:00, 343.19it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|████████████████████████████████████████████████████████▋                        | 70/100 [00:00&lt;00:00, 342.44it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00&lt;00:00, 342.55it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<img alt="_images/99b73aab9c73dd09acc1c6175d0a8f723f0e21e4f1309aa7d36aa6cc58c7e8a5.png" src="_images/99b73aab9c73dd09acc1c6175d0a8f723f0e21e4f1309aa7d36aa6cc58c7e8a5.png" />
+<img alt="_images/c5c93bc188380b06f6d60f42f400207ccc91edf45fb80b12a849ced7e4a9768f.png" src="_images/c5c93bc188380b06f6d60f42f400207ccc91edf45fb80b12a849ced7e4a9768f.png" />
 </div>
 </div>
 </section>

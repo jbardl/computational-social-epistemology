@@ -8,6 +8,7 @@ from itertools import groupby
 from multiprocessing import Pool
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
 import plotly.graph_objects as go
 
 
@@ -91,9 +92,11 @@ class BoundedConfidenceModel:
         return False
 
 
-    def plot_results(self):
+    def plot_results(self, ax=None):
         """Genera gráfico de líneas que muestra la evolución de las opiniones"""
-        fig, ax = plt.subplots(figsize=(13,6))
+        if ax is None:
+            fig, ax = plt.subplots(figsize=(13,6))
+            
         cmap = plt.get_cmap('hsv', self.n)
         x = np.arange(self.history.shape[1])
 
@@ -250,7 +253,7 @@ class RelativeAgreementModel:
         self.v = v
 
         self.agents = None
-        self.history = None
+        self.opinion_history = None
 
 
     def run(self):
@@ -263,7 +266,7 @@ class RelativeAgreementModel:
             new_profile = np.empty((self.n, 2))
             new_profile[random_pairs_idxs] = np.array(list(map(self.update, random_pairs)))
             self.agents = new_profile.reshape(self.n, 2)
-            self.history = np.concatenate([self.history, new_profile[:, 0].reshape(-1, 1)], axis=1)
+            self.opinion_history = np.concatenate([self.opinion_history, new_profile[:, 0].reshape(-1, 1)], axis=1)
 
 
     def init_params(self):
@@ -273,7 +276,7 @@ class RelativeAgreementModel:
         uncertainties = np.full(shape=(self.n, 1), fill_value=self.uncertainty)
         self.agents = np.concatenate([opinions, uncertainties], axis=1)
         self.agents.sort(axis=0)
-        self.history = self.agents[:, 0].reshape(-1, 1)
+        self.opinion_history = self.agents[:, 0].reshape(-1, 1)
 
 
     def update(self, pair):
@@ -300,13 +303,15 @@ class RelativeAgreementModel:
             return np.array([opinion_2, uncertainty_2])
 
 
-    def plot_results(self):
-        fig, ax = plt.subplots(figsize=(13,6))
+    def plot_results(self, ax=None):
+        if ax is None:
+            fig, ax = plt.subplots(figsize=(13,6))
+
         cmap = plt.get_cmap('hsv', self.n)
-        x = np.arange(self.history.shape[1])
+        x = np.arange(self.opinion_history.shape[1])
 
         for agent in range(self.n):
-            ax.plot(x, self.history[agent, :], color=cmap(agent))
+            ax.plot(x, self.opinion_history[agent, :], color=cmap(agent))
 
 
 class RAModelExtremists(RelativeAgreementModel):
@@ -328,6 +333,24 @@ class RAModelExtremists(RelativeAgreementModel):
         self.global_proportion = global_proportion
         self.delta = delta
 
+    def run(self):
+        self.init_params()
+        iterator = range(self.epochs)
+        for epoch in tqdm(iterator) if self.v else iterator:
+            random_pairs_idxs = np.random.choice(a=self.n, replace=False,
+                                                 size=(int(self.n/2), 2))
+            random_pairs = self.agents[random_pairs_idxs]
+            new_profile = np.empty((self.n, 2))
+            new_profile[random_pairs_idxs] = np.array(list(map(self.update, random_pairs)))
+            self.agents = new_profile.reshape(self.n, 2)
+            self.opinion_history = np.concatenate([
+                self.opinion_history, 
+                new_profile[:, 0].reshape(-1, 1)], 
+               axis=1)
+            self.uncertainty_history = np.concatenate([
+                self.uncertainty_history, 
+                new_profile[:, 1].reshape(-1, 1)], 
+               axis=1)
 
     def init_params(self):
         low, high = self.opinion_range
@@ -335,7 +358,8 @@ class RAModelExtremists(RelativeAgreementModel):
         opinions.sort(axis=0)
         uncertainties = self.make_uncertainties()
         self.agents = np.concatenate([opinions, uncertainties], axis=1)
-        self.history = self.agents[:, 0].reshape(-1, 1)
+        self.opinion_history = self.agents[:, 0].reshape(-1, 1)
+        self.uncertainty_history = self.agents[:, 1].reshape(-1, 1)
 
 
     def make_uncertainties(self):
@@ -353,10 +377,45 @@ class RAModelExtremists(RelativeAgreementModel):
         return n_extremists
 
 
-    def plot_results(self):
-        fig, ax = plt.subplots(figsize=(13,6))
-        cmap = plt.get_cmap('hsv', self.n)
-        x = np.arange(self.history.shape[1])
+    def plot_results(self, ax=None):
+        if ax is None:
+            fig, ax = plt.subplots(figsize=(13,6))
 
+        # Create custom colormap: red -> yellow -> green
+        colors = ['red', 'yellow', 'limegreen']
+        n_bins = 100
+        cmap = LinearSegmentedColormap.from_list("uncertainty_cmap", colors, N=n_bins)
+
+        # Get timesteps for x-axis
+        timesteps = np.arange(self.opinion_history.shape[1])
+
+        # Find global min and max uncertainty for proper scaling
+        min_uncertainty = np.min(self.uncertainty_history)
+        max_uncertainty = np.max(self.uncertainty_history)
+
+        all_segments = []
+
+        # Plot each agent's trajectory
         for agent in range(self.n):
-            ax.plot(x, self.history[agent, :], color=cmap(agent))
+            # Get opinion and uncertainty trajectories for this agent
+            opinions = self.opinion_history[agent, :]
+            uncertainties = self.uncertainty_history[agent, :]
+
+            # Create segments for the line with colors based on uncertainty
+            points = np.array([timesteps, opinions]).T.reshape(-1, 1, 2)
+            segments = np.concatenate([points[:-1], points[1:]], axis=1)
+
+            # Normalize uncertainties to [0,1] for coloring
+            normalized_uncertainties = (uncertainties[:-1] - min_uncertainty) / (max_uncertainty - min_uncertainty)
+
+            # Create line collection with varying colors
+            lc = plt.matplotlib.collections.LineCollection(
+                segments, cmap=cmap,
+                norm=plt.Normalize(0, 1),
+                linewidth=1
+            )
+            lc.set_array(normalized_uncertainties)
+            ax.add_collection(lc)
+
+        ax.set_xlim(timesteps.min(), timesteps.max())
+        ax.set_ylim(-1.0, 1.0)
